@@ -1,0 +1,29 @@
+from typing import List
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # Create a dictionary to store the numbers we have seen and their indices
+        num_dict = {}
+        
+        # Iterate through the list
+        for i, num in enumerate(nums):
+            # Calculate the complement (the number we need to add to the current number to get the target)
+            complement = target - num
+            
+            # Check if the complement exists in the dictionary
+            if complement in num_dict:
+                # If it exists, return the indices of the two numbers
+                return [num_dict[complement], i]
+            
+            # Otherwise, store the current number and its index in the dictionary
+            num_dict[num] = i
+
+'''Explanation of the Code:
+Parameters:
+nums: The list of integers.
+target: The target sum you want to achieve by adding two numbers.
+Logic:
+A dictionary (num_dict) is used to store numbers from nums as keys and their respective indices as values.
+For each number in the list nums, we compute its complement (target - num), which is the number required to add up to the target.
+If the complement is found in num_dict, it means we have already encountered the number that, when added to the current number, gives the target. The indices of both numbers are then returned.
+If the complement is not found, the current number and its index are stored in num_dict for future reference.'''
